@@ -2,6 +2,9 @@
 
 A responsive MERN user management application. Administrators can create, view, search, edit, and delete user records through a protected dashboard.
 
+**Live application:** [PeopleHub on Vercel](https://user-management-application-ruddy.vercel.app)
+**Live API health check:** [Render API](https://user-management-application-4ryy.onrender.com/api/health)
+
 ## Features Implemented
 
 - REST API for create, view all, view by ID, update, and delete users.
@@ -136,21 +139,24 @@ npm.cmd run build --prefix client
 
 ## Deployment
 
-Backend deployment example using Render:
+The application is deployed with Vercel for the frontend and Render for the API.
+
+### Backend: Render
 
 - Root directory: `server`
 - Build command: `npm install`
 - Start command: `npm start`
-- Environment variables: use the values from `server/.env.example`
-- `MONGODB_URI`: use a MongoDB Atlas connection string
-- `CLIENT_URL`: set this to the deployed frontend URL
+- `MONGODB_URI`: a MongoDB Atlas connection string
+- `JWT_SECRET`: a unique secret of at least 32 characters
+- `ADMIN_EMAIL` and `ADMIN_PASSWORD`: credentials for the initial administrator
+- `CLIENT_URL`: `https://user-management-application-ruddy.vercel.app`
 
-Frontend deployment using Vercel or Netlify:
+### Frontend: Vercel
 
 - Root directory: `client`
 - Build command: `npm run build`
 - Output directory: `dist`
-- Environment variable: `VITE_API_URL=https://your-backend-url`
+- Environment variable: `VITE_API_URL=https://user-management-application-4ryy.onrender.com`
 
 Redeploy the frontend after changing `VITE_API_URL`.
 
@@ -165,5 +171,6 @@ Redeploy the frontend after changing `VITE_API_URL`.
 
 ## Submission
 
-- GitHub Repository Link: add after pushing this project to GitHub.
-- Live Application URL: add after deploying the frontend and API.
+- GitHub Repository: [srinivasanb2004/User-Management-Application](https://github.com/srinivasanb2004/User-Management-Application)
+- Live Application: [https://user-management-application-ruddy.vercel.app](https://user-management-application-ruddy.vercel.app)
+- Live API Health Check: [https://user-management-application-4ryy.onrender.com/api/health](https://user-management-application-4ryy.onrender.com/api/health)
