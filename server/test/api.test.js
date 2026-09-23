@@ -13,7 +13,7 @@ before(async () => {
   process.env.CLIENT_URL = 'http://localhost:5173';
   mongo = await MongoMemoryServer.create();
   await mongoose.connect(mongo.getUri());
-  const admin = await User.create({ fullName: 'Test Admin', email: 'admin@example.com', phone: '+12345678901', role: 'admin', passwordHash: await bcrypt.hash('password123456', 4) });
+  const admin = await User.create({ fullName: 'Test Admin', email: 'admin@example.com', phone: '1234567890', role: 'admin', passwordHash: await bcrypt.hash('password123456', 4) });
   adminId = String(admin._id);
   const login = await request(app).post('/api/auth/login').send({ email: 'admin@example.com', password: 'password123456' });
   assert.equal(login.status, 200);
@@ -25,7 +25,7 @@ test('authentication and CRUD flow', async () => {
   assert.equal((await request(app).get('/api/users')).status, 401);
   const invalid = await request(app).post('/api/users').set('Authorization', `Bearer ${token}`).send({ fullName: 'A', email: 'bad', phone: 'x', role: 'user' });
   assert.equal(invalid.status, 400);
-  const input = { fullName: 'Alex Rivera', email: 'alex@example.com', phone: '+12345678902', role: 'user' };
+  const input = { fullName: 'Alex Rivera', email: 'alex@example.com', phone: '1234567891', role: 'user' };
   const created = await request(app).post('/api/users').set('Authorization', `Bearer ${token}`).send(input);
   assert.equal(created.status, 201);
   const id = created.body.user.id;

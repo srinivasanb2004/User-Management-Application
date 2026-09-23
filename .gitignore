@@ -5,3 +5,4 @@ coverage/
 *.log
 .npm-cache/
 .mongo-binaries/
+.mongodb-binaries/

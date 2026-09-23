@@ -3,7 +3,7 @@ import { z } from 'zod';
 export const userSchema = z.object({
   fullName: z.string().trim().min(2).max(100),
   email: z.string().trim().email().max(254).transform(v => v.toLowerCase()),
-  phone: z.string().trim().regex(/^\+?[0-9][0-9 ()-]{6,19}$/, 'Enter a valid phone number'),
+  phone: z.string().trim().regex(/^[0-9]{10}$/, 'Enter a valid 10 digit phone number'),
   role: z.enum(['user', 'admin'])
 }).strict();
 
